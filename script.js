@@ -1,4 +1,6 @@
 const board = document.querySelector('#board');
+const btn = document.querySelector('.clear');
+
 const squareNumber = 500;
 const colors = ['#D8BFD8', '#DDA0DD	', '#EE82EE', '#DA70D6','#FF00FF', '#FF00FF','#BA55D3', '#9370DB', '#8A2BE2', '	#FF7F50', '#FF4500', '#FFD70', '#800080', '#4B0082'];
 
@@ -15,16 +17,13 @@ for (let i = 0; i < squareNumber; i++) {  //цикл остановится ко
         elem.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
     });
 
-    square.addEventListener('mouseleave', (e) => {      //убрали мышку - вернулся изначальный черный цвет
-        const elem = e.target;
-        elem.style.backgroundColor = '#1d1d1d';
-        elem.style.boxShadow = '0 0 2px #000';
-    });   
+    btn.addEventListener('click', () => {
+        square.style.backgroundColor = '#1d1d1d';
+        square.style.boxShadow = '0 0 2px #000';
+    });
 }
 
-
 function getRandomColor(){
-    const index = Math.round(Math.random() * colors.length);
-    return colors[index];
+    return colors[Math.round(Math.random() * colors.length)];
 }
 
